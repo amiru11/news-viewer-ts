@@ -9,3 +9,8 @@ export interface IArticle {
 export interface IArticles {
   articles: IArticle[];
 }
+
+export interface ICategories {
+  category: string;
+  onSelect: ({ target }: React.MouseEvent<HTMLDivElement>) => void;
+}
