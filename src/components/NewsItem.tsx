@@ -15,14 +15,14 @@ function NewsItem({ ...article }: IArticle): JSX.Element {
     <ItemBlock>
       {urlToImage && (
         <ItemThumbnail>
-          <a href={url} target="_blank" rel="noopenner noreferrer">
+          <a href={url} target="_blank" rel="noopener noreferrer">
             <img src={urlToImage} alt="thumbnail" />
           </a>
         </ItemThumbnail>
       )}
       <ItemContents>
         <h2>
-          <a href={url} target="_blank" rel="noopenner noreferrer">
+          <a href={url} target="_blank" rel="noopener noreferrer">
             {title}
           </a>
         </h2>
