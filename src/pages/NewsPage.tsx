@@ -1,12 +1,7 @@
 import * as React from "react";
-import { RouteComponentProps } from "react-router-dom";
 import Categories from "../components/Categories";
 import NewsList from "../components/NewsList";
-
-interface IMatch extends RouteComponentProps<IParams> {}
-interface IParams {
-  category: string | undefined;
-}
+import { IMatch } from "../components/types";
 
 function NewsPage({ match }: IMatch) {
   const category = match.params.category || "all";
