@@ -14,6 +14,9 @@ export const ItemThumbnail = styled.div`
     display: block;
     width: 160px;
     height: 100px;
+    &:hover {
+      color: #ff9999;
+    }
   }
 `;
 
@@ -22,6 +25,10 @@ export const ItemContents = styled.div`
     margin: 0;
     a {
       color: #000000;
+
+      &:hover {
+        color: #ff9999;
+      }
     }
   }
   p {

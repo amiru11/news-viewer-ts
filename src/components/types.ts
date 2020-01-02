@@ -1,3 +1,5 @@
+import { RouteComponentProps } from "react-router-dom";
+
 export interface IArticle {
   title: string;
   description: string;
@@ -15,6 +17,11 @@ export interface ICategory {
 }
 
 export interface ICategories {
-  category: string;
-  onSelect: ({ target }: React.MouseEvent<HTMLDivElement>) => void;
+  // category: string;
+  onSelect: ({ target }: React.MouseEvent<HTMLDivElement>) => void | undefined;
+}
+
+export interface IMatch extends RouteComponentProps<IParams> {}
+export interface IParams {
+  category: string | undefined;
 }
