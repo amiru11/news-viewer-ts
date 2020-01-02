@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { ItemBlock, ItemThumbnail, ItemContents } from "../styles/newsItem";
 
 interface IArticle {
