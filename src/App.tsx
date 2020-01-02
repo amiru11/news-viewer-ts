@@ -1,7 +1,8 @@
 import React from "react";
+import NewsList from "./components/NewsList";
 
-const App: React.FC = () => {
-  return <div className="App"></div>;
-};
+function App() {
+  return <NewsList />;
+}
 
 export default App;
