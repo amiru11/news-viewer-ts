@@ -15,6 +15,6 @@ export interface ICategory {
 }
 
 export interface ICategories {
-  category: string;
-  onSelect: ({ target }: React.MouseEvent<HTMLDivElement>) => void;
+  // category: string;
+  onSelect: ({ target }: React.MouseEvent<HTMLDivElement>) => void | undefined;
 }
