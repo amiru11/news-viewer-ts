@@ -1,7 +1,6 @@
 import React from "react";
 import { CategoriesBlock, Category } from "../styles/categories";
 import { categories } from "../enum";
-
 import { ICategories } from "./types";
 
 function Categories({ ...props }: ICategories): JSX.Element {
