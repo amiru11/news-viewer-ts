@@ -1,39 +1,26 @@
-import React, { useState, useEffect } from "react";
+import * as React from "react";
 import axios from "axios";
 import { ListBlock } from "../styles/newsList";
 import NewsItem from "./NewsItem";
-import { IArticle, ICategory } from "./types";
+import { IArticles, ICategory } from "./types";
 import { NEWS_API_KEY } from "../config";
+import usePromise from "../lib/usePromise";
 
 function NewsList({ category }: ICategory): JSX.Element {
-  const [articles, setArticles] = useState<IArticle[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    // async를 사용하기 위한 함수 선언
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const query = category === "all" ? "" : `&category=${category}`;
-        const response = await axios.get(
-          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=${NEWS_API_KEY}`
-        );
-        setArticles(response.data.articles);
-      } catch (error) {
-        console.log(error);
-      }
-      setLoading(false);
-    };
-    fetchData();
-  }, [category]); // componentDidMount, componentDidUpdate를 해주는 역할
+  const [loading, response, error] = usePromise(() => {
+    const query = category === "all" ? "" : `&category=${category}`;
+    return axios.get(
+      `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=${NEWS_API_KEY}`
+    ); // 이 부분이 promiseCreator 파라미터 부분
+  }, [category]);
+  // const [articles, setArticles] = useState<IArticle[]>([]);
 
   // 대기 중일 때,
-  if (loading) {
-    return <ListBlock>로딩 중...</ListBlock>;
-  }
-  if (!articles) {
-    return <></>;
-  }
+  if (loading) return <ListBlock>로딩 중...</ListBlock>;
+  if (!response) return <></>;
+  if (error) return <ListBlock>에러!</ListBlock>;
+
+  const { articles }: IArticles = response.data;
 
   return (
     <ListBlock>
